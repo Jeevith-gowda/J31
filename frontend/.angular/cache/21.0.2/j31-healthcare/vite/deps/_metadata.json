@@ -1,0 +1,70 @@
+{
+  "hash": "d54e0972",
+  "configHash": "81a62870",
+  "lockfileHash": "9a58724b",
+  "browserHash": "0a2d3666",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "6cec7779",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "db0d1606",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "ce9f80cd",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "6a0396b8",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "dee9b807",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "f43eae35",
+      "needsInterop": false
+    },
+    "d3": {
+      "src": "../../../../../../node_modules/d3/src/index.js",
+      "file": "d3.js",
+      "fileHash": "d818c961",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-YPPSA6MP": {
+      "file": "chunk-YPPSA6MP.js"
+    },
+    "chunk-4HNKIAYZ": {
+      "file": "chunk-4HNKIAYZ.js"
+    },
+    "chunk-BQLZ7BAK": {
+      "file": "chunk-BQLZ7BAK.js"
+    },
+    "chunk-4XFP4ZUA": {
+      "file": "chunk-4XFP4ZUA.js"
+    },
+    "chunk-YQ5LRSWD": {
+      "file": "chunk-YQ5LRSWD.js"
+    },
+    "chunk-GOMI4DH3": {
+      "file": "chunk-GOMI4DH3.js"
+    }
+  }
+}
