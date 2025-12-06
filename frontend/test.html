@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>J31 Backend Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; }
+    label { display:block; margin-top: 1rem; }
+    input { width: 360px; max-width: 100%; }
+    pre { background:#f5f5f5; padding:1rem; border-radius:8px; overflow:auto; }
+    button { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>J31 Backend Test</h1>
+  <p>Use this page to login and call protected endpoints without CSP issues.</p>
+
+  <label>Backend Base URL
+    <input id="base" value="http://localhost:3000" />
+  </label>
+
+  <button id="login">Login (get JWT)</button>
+  <pre id="loginOut"></pre>
+
+  <button id="health">GET /api/health</button>
+  <pre id="healthOut"></pre>
+
+  <button id="dbcheck">GET /api/db-check</button>
+  <pre id="dbOut"></pre>
+
+  <button id="chart1">GET /api/chart1</button>
+  <pre id="chart1Out"></pre>
+
+  <button id="chart2">GET /api/chart2</button>
+  <pre id="chart2Out"></pre>
+
+  <script>
+    let token = '';
+    const base = document.getElementById('base');
+    const loginBtn = document.getElementById('login');
+    const loginOut = document.getElementById('loginOut');
+
+    const healthBtn = document.getElementById('health');
+    const healthOut = document.getElementById('healthOut');
+
+    const dbBtn = document.getElementById('dbcheck');
+    const dbOut = document.getElementById('dbOut');
+
+    const c1Btn = document.getElementById('chart1');
+    const c1Out = document.getElementById('chart1Out');
+
+    const c2Btn = document.getElementById('chart2');
+    const c2Out = document.getElementById('chart2Out');
+
+    loginBtn.onclick = async () => {
+      loginOut.textContent = 'Logging in...';
+      try {
+        const res = await fetch(`${base.value}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: 'Jeevith', password: 'Jeevith' })
+        });
+        const data = await res.json();
+        token = data.token || '';
+        loginOut.textContent = JSON.stringify(data, null, 2);
+      } catch (e) {
+        loginOut.textContent = 'Error: ' + e.message;
+      }
+    };
+
+    async function authedGet(path, outEl) {
+      outEl.textContent = `Fetching ${path}...`;
+      try {
+        const res = await fetch(`${base.value}${path}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        outEl.textContent = JSON.stringify(data, null, 2);
+      } catch (e) {
+        outEl.textContent = 'Error: ' + e.message;
+      }
+    }
+
+    healthBtn.onclick = () => authedGet('/api/health', healthOut);
+    dbBtn.onclick = () => authedGet('/api/db-check', dbOut);
+    c1Btn.onclick = () => authedGet('/api/chart1', c1Out);
+    c2Btn.onclick = () => authedGet('/api/chart2', c2Out);
+  </script>
+</body>
+</html>
